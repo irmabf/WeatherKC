@@ -19,6 +19,7 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/european_system_button"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
             tools:ignore="NestedWeights" />
 
         <Button
+            android:id="@+id/american_system_button"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
