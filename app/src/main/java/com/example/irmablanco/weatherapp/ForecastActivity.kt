@@ -49,7 +49,7 @@ class ForecastActivity : AppCompatActivity(){
         when (item?.itemId){
             R.id.menu_show_settings -> {
                 //Lanzaremos la pantalla de ajustes
-                startActivity(SettingsActivity.intent(this))
+                startActivity(SettingsActivity.intent(this, TempUnit.CELSIUS))
                 return true
             }
         }
