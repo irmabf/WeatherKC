@@ -5,6 +5,7 @@ import android.app.Instrumentation
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_forecast.*
@@ -16,6 +17,7 @@ class ForecastActivity : AppCompatActivity() {
     }
 
     val REQUEST_SETTINGS = 1
+    val PREFERENCE_UNITS = "UNITS"
 
     var forecast: Forecast? = null
         set(value) {
@@ -35,8 +37,11 @@ class ForecastActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forecast)
-
-
+        units = when(PreferenceManager.getDefaultSharedPreferences(this)
+                .getInt(PREFERENCE_UNITS, TemperatureUnit.CELSIUS.ordinal)) {
+            TemperatureUnit.CELSIUS.ordinal -> TemperatureUnit.CELSIUS
+            else -> TemperatureUnit.FAHRENHEIT
+        }
         forecast = Forecast(
                 25f,
                 10f,
@@ -75,6 +80,13 @@ class ForecastActivity : AppCompatActivity() {
                     units = newUnits
                     // Actualizo la interfaz con las nuevas unidades
                     updateTemperatureView()
+
+                    //Guardamos las preferencias del usuario en cuanto a Celsius o Fahrenheit
+                    //Ojo!! Con esto guardamos los datos, pero los tenemos que recuperar en onCreate
+                    PreferenceManager.getDefaultSharedPreferences(this)
+                            .edit()
+                            .putInt(PREFERENCE_UNITS, units.ordinal)
+                            .apply()
                 }
             }
         }
