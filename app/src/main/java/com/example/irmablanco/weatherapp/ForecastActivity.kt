@@ -97,7 +97,8 @@ class ForecastActivity : AppCompatActivity() {
                         else getString(R.string.user_selects_fahrenheit)
                     //Toast.makeText(this, newUnitsString, Toast.LENGTH_LONG).show()
                     Snackbar.make(findViewById<View>(android.R.id.content), newUnitsString, Snackbar.LENGTH_LONG)
-                            .setAction(getString(R.string.undo), View.OnClickListener {
+                            //.setAction(getString(R.string.undo), View.OnClickListener {
+                            .setAction(getString(R.string.undo)){
                                 //Guardo las unidades viejas
                                 PreferenceManager.getDefaultSharedPreferences(this)
                                         .edit()
@@ -105,7 +106,7 @@ class ForecastActivity : AppCompatActivity() {
                                         .apply()
                                 updateTemperatureView()
                                 //Actualizo la interfaz para restaurar las unidades viejas
-                            })
+                            }
                             .show()
                 }
             }
