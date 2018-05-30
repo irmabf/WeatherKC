@@ -82,8 +82,12 @@ class ForecastActivity : AppCompatActivity() {
 
     // Aquí actualizaremos la interfaz con las temperaturas
     fun updateTemperatureView() {
-        max_temp.text = getString(R.string.max_temp_format, forecast?.getMaxTemp(units))
-        min_temp.text = getString(R.string.min_temp_format, forecast?.getMinTemp(units))
+        val unitsString = unitsToSring()
+        max_temp.text = getString(R.string.max_temp_format, forecast?.getMaxTemp(units), unitsString)
+        min_temp.text = getString(R.string.min_temp_format, forecast?.getMinTemp(units), unitsString)
     }
+
+    fun unitsToSring() = if (units == TemperatureUnit.CELSIUS) "ºC"
+        else "F"
 
 }
