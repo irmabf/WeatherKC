@@ -25,4 +25,12 @@ class ForecastUnitTest {
     fun minTempUnitsConversion_isCorrect(){
         assertEquals(50f, forecast.getMinTemp(TemperatureUnit.FAHRENHEIT))
     }
+    @Test(expected = IllegalArgumentException::class)
+    fun humidityOverRange_ThrowsArgumentException() {
+        Forecast(25f, 10f, 100.01f, "Sol", R.drawable.ico_01)
+    }
+    @Test(expected = IllegalArgumentException::class)
+    fun humidityUnderRange_ThrowsArgumentException() {
+        Forecast(25f, 10f, -1f, "Sol", R.drawable.ico_01)
+    }
 }
