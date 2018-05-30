@@ -3,4 +3,5 @@
     <string name="offline_image_description">Predicción del tiempo offline</string>
     <string name="european_system_button">Sistema Europeo</string>
     <string name="american_system_button">Sistema Americano</string>
+    <string name="forecast_description">Descripción gráfica del tiempo que hace</string>
 </resources>

@@ -3,14 +3,14 @@ package com.example.irmablanco.weatherapp
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_forecast.*
 
 class ForecastActivity : AppCompatActivity(){
     val TAG = ForecastActivity::class.java.canonicalName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_forecast)
 
         val forecast = Forecast(
                 25f,
@@ -19,12 +19,6 @@ class ForecastActivity : AppCompatActivity(){
                 "Soleado con alguna nube",
                 R.drawable.ico_01)
 
-        european_system_button.setOnClickListener {
-            forecast_image.setImageResource(R.drawable.offline_weather)
-        }
-        american_system_button.setOnClickListener{
-            forecast_image.setImageResource(R.drawable.offline_weather2)
-        }
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
