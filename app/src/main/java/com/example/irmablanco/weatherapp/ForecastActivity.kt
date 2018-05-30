@@ -12,6 +12,13 @@ class ForecastActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val forecast = Forecast(
+                25f,
+                10f,
+                35f,
+                "Soleado con alguna nube",
+                R.drawable.ico_01)
+
         european_system_button.setOnClickListener {
             forecast_image.setImageResource(R.drawable.offline_weather)
         }
