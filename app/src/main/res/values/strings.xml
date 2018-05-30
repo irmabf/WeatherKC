@@ -13,4 +13,5 @@
     <string name="settings">Ajustes</string>
     <string name="user_selects_celsius">Has elegido ºCelsius</string>
     <string name="user_selects_fahrenheit">Has elegido Fahrenheit</string>
+    <string name="undo">Deshacer</string>
 </resources>
