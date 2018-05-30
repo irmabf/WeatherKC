@@ -32,16 +32,17 @@ class ForecastActivity : AppCompatActivity() {
             }
         }
 
-    var units = TemperatureUnit.CELSIUS
+    val units: TemperatureUnit
+        get() = when (PreferenceManager.getDefaultSharedPreferences(this)
+                    .getInt(PREFERENCE_UNITS, TemperatureUnit.CELSIUS.ordinal)) {
+                TemperatureUnit.CELSIUS.ordinal -> TemperatureUnit.CELSIUS
+                else -> TemperatureUnit.FAHRENHEIT
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forecast)
-        units = when(PreferenceManager.getDefaultSharedPreferences(this)
-                .getInt(PREFERENCE_UNITS, TemperatureUnit.CELSIUS.ordinal)) {
-            TemperatureUnit.CELSIUS.ordinal -> TemperatureUnit.CELSIUS
-            else -> TemperatureUnit.FAHRENHEIT
-        }
+
         forecast = Forecast(
                 25f,
                 10f,
@@ -77,16 +78,16 @@ class ForecastActivity : AppCompatActivity() {
                 if (resultCode == Activity.RESULT_OK && data != null) {
                     // Volvemos de settings con datos sobre las unidades elegidas por el usuario
                     val newUnits = data.getSerializableExtra(SettingsActivity.EXTRA_UNITS) as TemperatureUnit
-                    units = newUnits
-                    // Actualizo la interfaz con las nuevas unidades
-                    updateTemperatureView()
 
                     //Guardamos las preferencias del usuario en cuanto a Celsius o Fahrenheit
                     //Ojo!! Con esto guardamos los datos, pero los tenemos que recuperar en onCreate
                     PreferenceManager.getDefaultSharedPreferences(this)
                             .edit()
-                            .putInt(PREFERENCE_UNITS, units.ordinal)
+                            .putInt(PREFERENCE_UNITS, newUnits.ordinal)
                             .apply()
+
+                    // Actualizo la interfaz con las nuevas unidades
+                    updateTemperatureView()
                 }
             }
         }
