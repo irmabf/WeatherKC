@@ -81,6 +81,7 @@ class ForecastActivity : AppCompatActivity() {
                 if (resultCode == Activity.RESULT_OK && data != null) {
                     // Volvemos de settings con datos sobre las unidades elegidas por el usuario
                     val newUnits = data.getSerializableExtra(SettingsActivity.EXTRA_UNITS) as TemperatureUnit
+                    val oldUnits = units
 
                     //Guardamos las preferencias del usuario en cuanto a Celsius o Fahrenheit
                     //Ojo!! Con esto guardamos los datos, pero los tenemos que recuperar en onCreate
@@ -95,7 +96,17 @@ class ForecastActivity : AppCompatActivity() {
                     val newUnitsString = if (newUnits == TemperatureUnit.CELSIUS) getString(R.string.user_selects_celsius)
                         else getString(R.string.user_selects_fahrenheit)
                     //Toast.makeText(this, newUnitsString, Toast.LENGTH_LONG).show()
-                    Snackbar.make(findViewById<View>(android.R.id.content), newUnitsString, Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(findViewById<View>(android.R.id.content), newUnitsString, Snackbar.LENGTH_LONG)
+                            .setAction("Deshacer", View.OnClickListener {
+                                //Guardo las unidades viejas
+                                PreferenceManager.getDefaultSharedPreferences(this)
+                                        .edit()
+                                        .putInt(PREFERENCE_UNITS, oldUnits.ordinal)
+                                        .apply()
+                                updateTemperatureView()
+                                //Actualizo la interfaz para restaurar las unidades viejas
+                            })
+                            .show()
                 }
             }
         }
