@@ -3,19 +3,13 @@ package com.example.irmablanco.weatherapp
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.provider.ContactsContract
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(){
-    val TAG = MainActivity::class.java.canonicalName
+class ForecastActivity : AppCompatActivity(){
+    val TAG = ForecastActivity::class.java.canonicalName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
 
         european_system_button.setOnClickListener {
