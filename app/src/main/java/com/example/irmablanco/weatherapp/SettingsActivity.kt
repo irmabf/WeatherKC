@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.GestureDetector
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -12,7 +11,7 @@ class SettingsActivity : AppCompatActivity() {
     companion object {
         //Damos  un valor a la key para las initial Units
         val EXTRA_UNITS = "EXTRA_UNITS"
-        fun intent(context: Context, initialUnits: TempUnit): Intent{
+        fun intent(context: Context, initialUnits: TemperatureUnit): Intent{
             val intent = Intent(context, SettingsActivity::class.java)
 
            intent.putExtra(EXTRA_UNITS, initialUnits)
@@ -33,12 +32,16 @@ class SettingsActivity : AppCompatActivity() {
         cancel_btn.setOnClickListener{ cancelSettings() }
         //show celsius btn as preselected btn in btn group
         //Decidir que radioButton debe estar marcado en funcion de initialUnits
-        if (initialUnits == TempUnit.CELSIUS){
+
+        units_rg.check(if (initialUnits == TemperatureUnit.CELSIUS)
+            R.id.celsius_rb
+            else R.id.farenheit_rb
+        )
+       /* if (initialUnits == TemperatureUnit.CELSIUS){
             units_rg.check(R.id.celsius_rb)
         }else{
             units_rg.check(R.id.farenheit_rb)
-        }
-
+        }*/
     }
 
     private fun cancelSettings() {

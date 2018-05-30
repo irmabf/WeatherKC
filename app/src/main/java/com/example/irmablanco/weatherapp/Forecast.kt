@@ -2,7 +2,7 @@ package com.example.irmablanco.weatherapp
 
 //Usamos un enum para guardar en grados celsius y en grados fahrenheit
 //Lo pasamos a SettingsActivity
-enum class TempUnit{
+enum class TemperatureUnit{
     CELSIUS,
     FAHRENHEIT
 }
