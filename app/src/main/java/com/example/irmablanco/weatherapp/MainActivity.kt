@@ -8,25 +8,21 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
     val TAG = MainActivity::class.java.canonicalName
-    val forecastImage by lazy {
-        findViewById<ImageView>(R.id.forecast_image)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
-        val europeanButton = findViewById<Button>(R.id.european_system_button)
-        val americanButton = findViewById<Button>(R.id.american_system_button)
-
-        europeanButton?.setOnClickListener {
-            forecastImage.setImageResource(R.drawable.offline_weather)
+        european_system_button.setOnClickListener {
+            forecast_image.setImageResource(R.drawable.offline_weather)
         }
-        americanButton?.setOnClickListener{
-            forecastImage.setImageResource(R.drawable.offline_weather2)
+        american_system_button.setOnClickListener{
+            forecast_image.setImageResource(R.drawable.offline_weather2)
         }
     }
 
