@@ -1,8 +1,11 @@
 package com.example.irmablanco.weatherapp
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_forecast.*
 import kotlin.math.min
 
@@ -35,6 +38,23 @@ class ForecastActivity : AppCompatActivity(){
                 "Soleado con alguna nube",
                 R.drawable.ico_01)
 
+    }
+    //Creamos un meno para movernos entre pantallas
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.activity_forecast, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId){
+            R.id.menu_show_settings -> {
+                //Lanzaremos la pantalla de ajustes
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

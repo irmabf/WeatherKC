@@ -10,4 +10,5 @@
     <string name="select_units_text">Selecciona las unidades:</string>
     <string name="celsius_units">Unidades Celsius</string>
     <string name="fahrenheit_units">Unidades Fahrenheit</string>
+    <string name="settings">Ajustes</string>
 </resources>
