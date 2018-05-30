@@ -49,8 +49,7 @@ class ForecastActivity : AppCompatActivity(){
         when (item?.itemId){
             R.id.menu_show_settings -> {
                 //Lanzaremos la pantalla de ajustes
-                val intent = Intent(this, SettingsActivity::class.java)
-                startActivity(intent)
+                startActivity(SettingsActivity.intent(this))
                 return true
             }
         }
