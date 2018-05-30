@@ -4,4 +4,7 @@
     <string name="european_system_button">Sistema Europeo</string>
     <string name="american_system_button">Sistema Americano</string>
     <string name="forecast_description">Descripción gráfica del tiempo que hace</string>
+    <string name="max_temp_format">Max: %.2fº</string>
+    <string name="min_temp_format">Min: %.2fº</string>
+    <string name="humidity_format">Humedad: %.0f%%</string>
 </resources>
