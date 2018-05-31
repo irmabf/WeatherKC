@@ -34,6 +34,12 @@ class ForecastFragment: Fragment() {
             TemperatureUnit.CELSIUS.ordinal -> TemperatureUnit.CELSIUS
             else -> TemperatureUnit.FAHRENHEIT
         }
+    /*Metodo onCreate propio de los fragments, su funcion es colocar el menu si lo hay
+    * */
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
