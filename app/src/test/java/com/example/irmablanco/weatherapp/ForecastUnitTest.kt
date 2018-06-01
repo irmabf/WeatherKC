@@ -1,5 +1,7 @@
 package com.example.irmablanco.weatherapp
 
+import com.example.irmablanco.weatherapp.model.Forecast
+import com.example.irmablanco.weatherapp.model.TemperatureUnit
 import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Before

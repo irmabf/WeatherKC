@@ -1,4 +1,4 @@
-package com.example.irmablanco.weatherapp
+package com.example.irmablanco.weatherapp.model
 
 enum class TemperatureUnit {
     CELSIUS,

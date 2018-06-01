@@ -1,8 +1,9 @@
-package com.example.irmablanco.weatherapp
+package com.example.irmablanco.weatherapp.activity
 
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.irmablanco.weatherapp.R
 
 
 class ForecastActivity : AppCompatActivity() {

@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/default_activity_padding"
-    tools:context=".ForecastActivity">
+    tools:context=".activity.ForecastActivity">
 
     <fragment
         android:id="@+id/forecast_fragment"
+        android:layout_gravity="bottom|end"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.irmablanco.weatherapp.ForecastFragment"/>
+        android:name="com.example.irmablanco.weatherapp.fragment.ForecastFragment"/>
 </FrameLayout>

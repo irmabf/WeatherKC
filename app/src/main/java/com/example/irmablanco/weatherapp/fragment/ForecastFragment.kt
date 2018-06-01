@@ -1,4 +1,4 @@
-package com.example.irmablanco.weatherapp
+package com.example.irmablanco.weatherapp.fragment
 
 import android.app.Activity
 import android.app.Fragment
@@ -7,6 +7,10 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.design.widget.Snackbar
 import android.view.*
+import com.example.irmablanco.weatherapp.model.Forecast
+import com.example.irmablanco.weatherapp.R
+import com.example.irmablanco.weatherapp.model.TemperatureUnit
+import com.example.irmablanco.weatherapp.activity.SettingsActivity
 import kotlinx.android.synthetic.main.fragment_forecast.*
 
 
