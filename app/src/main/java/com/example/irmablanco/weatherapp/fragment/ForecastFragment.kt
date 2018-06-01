@@ -11,10 +11,29 @@ import com.example.irmablanco.weatherapp.model.Forecast
 import com.example.irmablanco.weatherapp.R
 import com.example.irmablanco.weatherapp.model.TemperatureUnit
 import com.example.irmablanco.weatherapp.activity.SettingsActivity
+import com.example.irmablanco.weatherapp.model.City
 import kotlinx.android.synthetic.main.fragment_forecast.*
 
 
 class ForecastFragment: Fragment() {
+    //Creo un companion object, que es donde iran las partes estáticas
+    //del forecast fragment
+    companion object {
+        val ARG_CITY = "ARG_CITY"
+        /*Metodo para crear instancias de ciudades
+        * Recibe una instancia de la data class City y devuelve un Fragmento*/
+        fun newInstance(city: City): Fragment{
+            //Nos creamos el fragment, que será una nueva instancia de ForecastFragment
+            val fragment = ForecastFragment()
+            //Nos creamos los argumentos del fragment
+            val arguments = Bundle()
+            arguments.putSerializable(ARG_CITY, city)
+            //Asignamos los argumentos al fragment
+            fragment.arguments = arguments
+            //Devolvemos  el fragment
+            return fragment
+        }
+    }
 
     val REQUEST_SETTINGS = 1
     val PREFERENCE_UNITS = "UNITS"
@@ -61,12 +80,11 @@ class ForecastFragment: Fragment() {
      *Le asignamos un valor al seter del forecast */
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        forecast = Forecast(
-                25f,
-                10f,
-                35f,
-                "Soleado con alguna nube",
-                R.drawable.ico_01)
+
+        if(arguments != null){
+            val city = arguments.getSerializable(ARG_CITY) as City
+            forecast = city.forecast
+        }
     }
     /**************************************onCreateOptionsMenu**********************************
    * Si el fragment tiene opciones de menu tenemos que implementar este metodo*/

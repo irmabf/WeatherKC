@@ -19,7 +19,7 @@ class CityPagerActivity : AppCompatActivity() {
         val adapter = object: FragmentPagerAdapter(fragmentManager){
 
             override fun getItem(position: Int): Fragment {
-                return ForecastFragment()
+                return ForecastFragment.newInstance(cities.getCity(position))
             }
             /*override fun getCount(): Int {
                 return cities.count
