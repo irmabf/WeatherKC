@@ -25,6 +25,10 @@ class CityPagerActivity : AppCompatActivity() {
                 return cities.count
             }*/
             override fun getCount() = cities.count
+
+            override fun getPageTitle(position: Int): CharSequence? {
+                return cities.getCity(position).name
+            }
         }
         //Paso el adaptador al fragment
         //Ojo!! Vamos a android manifest a informar de que esta es la priemra pantalla
