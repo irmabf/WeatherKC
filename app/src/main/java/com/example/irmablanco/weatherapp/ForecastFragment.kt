@@ -34,18 +34,27 @@ class ForecastFragment: Fragment() {
             TemperatureUnit.CELSIUS.ordinal -> TemperatureUnit.CELSIUS
             else -> TemperatureUnit.FAHRENHEIT
         }
-    /*Metodo onCreate propio de los fragments, su funcion es colocar el menu si lo hay
-    * */
+    /***************************************onCreate**********************************
+    *Metodo onCreate propio de los fragments, su funcion es colocar el menu si lo hay
+    *Es un metodo opcional en los fragments puesto que no tiene  nada
+    * qué ver con el onCreate de las activitys */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
 
+    /**************************************onCreateView**********************************
+     * Es el método más importante de los fragments.
+     *Su función es simililar a setContentView en las activitys,
+     *  cargar la interfaz de este fragment */
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater?.inflate(R.layout.fragment_forecast, container, false)!!
     }
 
+    /**************************************onViewCreated**********************************
+     * Este metodo se llama cuando la interfaz ya ha sido creada.
+     *Le asignamos un valor al seter del forecast */
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         forecast = Forecast(
@@ -55,7 +64,8 @@ class ForecastFragment: Fragment() {
                 "Soleado con alguna nube",
                 R.drawable.ico_01)
     }
-
+    /**************************************onCreateOptionsMenu**********************************
+   * Si el fragment tiene opciones de menu tenemos que implementar este metodo*/
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater?.inflate(R.menu.activity_forecast, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -73,7 +83,10 @@ class ForecastFragment: Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-
+    /*Los fragments pueden ser los objectivos de un onActivityResult,
+    * es decir, que cuando yo regrese de otra pantalla, en otro caso de ajustes,
+    *la clase fragment puede implementar el onActivityResult y por tanto,
+     * me puedo enterar en un fragment que estoy volviendo de una pantalla*/
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         super.onActivityResult(requestCode, resultCode, data)
