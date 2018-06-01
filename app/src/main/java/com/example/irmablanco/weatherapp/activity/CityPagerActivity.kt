@@ -1,9 +1,10 @@
 package com.example.irmablanco.weatherapp.activity
 
-import android.app.Fragment
+
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v13.app.FragmentPagerAdapter
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentPagerAdapter
 import com.example.irmablanco.weatherapp.R
 import com.example.irmablanco.weatherapp.fragment.ForecastFragment
 import com.example.irmablanco.weatherapp.model.Cities
@@ -16,7 +17,7 @@ class CityPagerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_city_pager)
         val cities = Cities()
         //Creo el adaptador
-        val adapter = object: FragmentPagerAdapter(fragmentManager){
+        val adapter = object: FragmentPagerAdapter(supportFragmentManager){
 
             override fun getItem(position: Int): Fragment {
                 return ForecastFragment.newInstance(cities.getCity(position))

@@ -1,7 +1,7 @@
 package com.example.irmablanco.weatherapp.fragment
 
 import android.app.Activity
-import android.app.Fragment
+import android.support.v4.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -66,45 +66,34 @@ class ForecastFragment: Fragment() {
         setHasOptionsMenu(true)
     }
 
-    /**************************************onCreateView**********************************
-     * Es el método más importante de los fragments.
-     *Su función es simililar a setContentView en las activitys,
-     *  cargar la interfaz de este fragment */
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater?.inflate(R.layout.fragment_forecast, container, false)!!
+        return inflater.inflate(R.layout.fragment_forecast, container, false)
     }
 
-    /**************************************onViewCreated**********************************
-     * Este metodo se llama cuando la interfaz ya ha sido creada.
-     *Le asignamos un valor al seter del forecast */
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(arguments != null){
-            val city = arguments.getSerializable(ARG_CITY) as City
+        if (arguments != null){
+            val city = arguments?.getSerializable(ARG_CITY) as City
             forecast = city.forecast
         }
     }
-    /**************************************onCreateOptionsMenu**********************************
-   * Si el fragment tiene opciones de menu tenemos que implementar este metodo*/
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.activity_forecast, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
+
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+        when (item?.itemId){
             R.id.menu_show_settings -> {
-                // Lanzaremos la pantalla de ajustes, indicando que nos devolverá datos
+                //Lanzaremos la pantalla de ajustes, indicando que nos devolverá datos
                 startActivityForResult(
-                        SettingsActivity.intent(activity, units),
+                        SettingsActivity.intent(activity!!, units),
                         REQUEST_SETTINGS)
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
+
     /*Los fragments pueden ser los objectivos de un onActivityResult,
     * es decir, que cuando yo regrese de otra pantalla, en otro caso de ajustes,
     *la clase fragment puede implementar el onActivityResult y por tanto,
@@ -133,7 +122,7 @@ class ForecastFragment: Fragment() {
                     val newUnitsString = if (newUnits == TemperatureUnit.CELSIUS) getString(R.string.user_selects_celsius)
                     else getString(R.string.user_selects_fahrenheit)
                     //Toast.makeText(this, newUnitsString, Toast.LENGTH_LONG).show()
-                    Snackbar.make(view, newUnitsString, Snackbar.LENGTH_LONG)
+                    Snackbar.make(view!!, newUnitsString, Snackbar.LENGTH_LONG)
                             //.setAction(getString(R.string.undo), View.OnClickListener {
                             .setAction(getString(R.string.undo)){
                                 //Guardo las unidades viejas
