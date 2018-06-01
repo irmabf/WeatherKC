@@ -16,9 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SettingsActivity">
-
-        </activity>
+        <activity android:name=".activity.SettingsActivity"></activity>
+        <activity android:name=".activity.CityPagerActivity"></activity>
     </application>
 
 </manifest>
